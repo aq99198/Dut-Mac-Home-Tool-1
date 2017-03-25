@@ -229,6 +229,13 @@
         }
     }
 }
+- (IBAction)mouseSpeedChanged:(NSComboBox *)sender {
+    // sender.intValue
+
+    NSString *commandBuff = [NSString stringWithFormat:@"defaults write -g com.apple.mouse.scaling %d",sender.intValue];
+    NSLog(@"%@",commandBuff);
+    [self execCmd:commandBuff];
+}
 -(IBAction)showHideChecked:(id)sender{
     if (showAllFileCheck.state==1) {
         [self execCmd:@"defaults write com.apple.finder AppleShowAllFiles -bool true;killall Finder"];
